@@ -1,21 +1,30 @@
 import format from "pg-format";
 import { client } from "../database";
-import { tUser } from "../interfaces";
-// import { userResult } from "../schemas";
-import { QueryResult } from "pg";
+import { tUser, userResult, userReturn, usersArray } from "../interfaces";
 import { userSchema } from "../schemas";
+import { hashSync } from "bcryptjs";
+import { userResultSchema, usersArraySchema } from "../schemas/user.schemas";
+// import { userResult } from "../schemas";
 
-const create = async (payload:string): Promise<tUser | any> => {
+
+const create = async (payload:tUser): Promise<tUser | any> => {
+    payload.password = hashSync(payload.password, 10);
+
     const queryString: string = format(
         'INSERT INTO "users" (%I) VALUES (%L) RETURNING *;',
         Object.keys(payload),
         Object.values(payload)
         ); 
 
-        const queryResult: QueryResult = await client.query(queryString);
-
-        const user: tUser = queryResult.rows[0];
-        return userSchema.parse(user);
+    const queryResult: userResult = await client.query(queryString);
+    const user: tUser = queryResult.rows[0];
+    
+    return userResultSchema.parse(user);
 };
 
-export default { create };
+const read = async(): Promise<usersArray> => {
+    const queryResult: userResult = await client.query('SELECT * FROM "users";');
+    return usersArraySchema.parse(queryResult.rows);
+};
+
+export default { create, read };

@@ -17,6 +17,6 @@ CREATE TABLE IF NOT EXISTS "userCourses" (
 	"active" BOOLEAN NOT NULL DEFAULT TRUE,
 	"userId" INTEGER NOT NULL,
 	"courseId" INTEGER NOT NULL,
-	FOREIGN KEY ("userId") REFERENCES "users"(id),
-	FOREIGN KEY ("courseId") REFERENCES "courses"(id)
+	FOREIGN KEY ("userId") REFERENCES "users"(id) ON DELETE CASCADE,
+	FOREIGN KEY ("courseId") REFERENCES "courses"(id)ON DELETE CASCADE 
 );

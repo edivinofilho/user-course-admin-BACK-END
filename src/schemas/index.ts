@@ -1,4 +1,5 @@
-import { courseSchema, courseCreate } from "./courses.schema";
-import { userCreate, userResult, userSchema } from "./user.schemas";
+import { courseSchema, courseCreate, courseArraySchema, courseResultSchema } from "./courses.schema";
+import { userCreate, userResultSchema, userSchema, usersArraySchema } from "./user.schemas";
+import { sessionSchema, sessionLogin } from "./session.schema"
 
-export { userSchema, userCreate, userResult, courseSchema, courseCreate  };
+export { userSchema, userCreate, userResultSchema, courseSchema, courseCreate, sessionSchema, sessionLogin, usersArraySchema, courseArraySchema, courseResultSchema };
