@@ -2,11 +2,10 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import "dotenv/config";
 
-import format, { string } from "pg-format";
 import { tUser } from "../interfaces";
 import { client } from "../database";
 import { AppError } from "../errors";
-import { userResultSchema } from "../schemas/user.schemas";
+
 
 const create = async (payload: tUser): Promise<any> => {
     const { email, password } = payload;
@@ -31,10 +30,6 @@ const create = async (payload: tUser): Promise<any> => {
         expiresIn: process.env.EXPIRES_IN,
         subject: String(user.id)
     });
-
-    console.log(user);
-    console.log(token);
-
     
     return token;
 };
