@@ -1,6 +1,6 @@
 import { QueryResult } from "pg";
 import { z } from "zod";
-import { tCourse } from "../interfaces";
+import { TCourse } from "../interfaces";
 
 const courseSchema = z.object ({
     id: z.number(),
@@ -10,6 +10,6 @@ const courseSchema = z.object ({
 
 const courseCreate = courseSchema.omit({id: true});
 const courseArraySchema = z.array(courseSchema);
-type courseResultSchema = QueryResult<tCourse>;
+type courseResultSchema = QueryResult<TCourse>;
 
 export { courseSchema, courseCreate, courseArraySchema, courseResultSchema };

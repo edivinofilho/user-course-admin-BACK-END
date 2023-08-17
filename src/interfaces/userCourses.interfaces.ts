@@ -1,10 +1,25 @@
 import { z } from "zod";
-import { userCourseRegisterSchema, userCoursesSchema } from "../schemas";
+import {
+  userCourseRegisterSchema,
+  userCoursesSchema,
+  userCourseInfoSchema,
+  usersCourseInfoArraySchema,
+} from "../schemas";
 import { QueryResult } from "pg";
 
-type userCourses = z.infer<typeof userCoursesSchema>; // 1 letra M!
-type userCourseResult = QueryResult <userCourses>;
-type userCourseRegister = z.infer<typeof userCourseRegisterSchema>
+type UserCourses = z.infer<typeof userCoursesSchema>;
+type UserCourseResult = QueryResult<UserCourses>;
+type UserCourseRegister = z.infer<typeof userCourseRegisterSchema>;
 
+type UserCourseInfo = z.infer<typeof userCourseInfoSchema>;
+type UserCourseInfoArray = z.infer<typeof usersCourseInfoArraySchema>;
+type UserCourseInfoResult = QueryResult<UserCourseInfo>;
 
-export { userCourses, userCourseResult, userCourseRegister };
+export {
+  UserCourses,
+  UserCourseResult,
+  UserCourseRegister,
+  UserCourseInfo,
+  UserCourseInfoArray,
+  UserCourseInfoResult,
+};

@@ -7,6 +7,17 @@ const userCoursesSchema = z.object({
     courseId: z.number().positive()
 });
 
+const userCourseInfoSchema = z.object({
+    userId: z.number().positive(),
+    userName: z.string(),
+    courseId: z.number().positive(),
+    courseName: z.string(),
+    courseDescription: z.string(),
+    userActiveInCourse: z.boolean()
+});
+
 const userCourseRegisterSchema = userCoursesSchema.omit({ id: true});
 
-export { userCoursesSchema, userCourseRegisterSchema };
+const usersCourseInfoArraySchema = z.array(userCourseInfoSchema);
+
+export { userCoursesSchema, userCourseRegisterSchema,userCourseInfoSchema, usersCourseInfoArraySchema };

@@ -10,6 +10,6 @@ coursesRouter.get("", coursesControllers.read);
 
 coursesRouter.post("/:courseId/users/:userId", validateToken, validateUserPermission, userCoursesControllers.signIn);
 coursesRouter.delete("/:courseId/users/:userId", validateToken, validateUserPermission, userCoursesControllers.inactivateUser);
-// coursesRouter.get("/:id/users", validateToken, userCoursesControllers.read);
+coursesRouter.get("/:id/users", validateToken, validateUserPermission, userCoursesControllers.read);
 
 export default coursesRouter;

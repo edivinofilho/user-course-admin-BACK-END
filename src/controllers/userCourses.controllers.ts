@@ -1,45 +1,51 @@
 import { Request, Response } from "express";
-import { tUser, userCourses, userReturn, usersArray } from "../interfaces";
 import userCourseServices from "../services/userCourse.services";
-import { userCourseRegister } from "../interfaces/userCourses.interfaces";
+import {
+  UserCourseInfoArray,
+  UserCourseInfoResult,
+  UserCourseRegister,
+} from "../interfaces/userCourses.interfaces";
 
-const signIn = async (req:Request, res: Response): Promise <any> => {
-    const courseId: string = req.params.courseId;
-    const userId: string = req.params.userId;
+const signIn = async (req: Request, res: Response): Promise<any> => {
+  const courseId: string = req.params.courseId;
+  const userId: string = req.params.userId;
 
-    const payload: userCourseRegister = { 
-        courseId: Number(courseId),
-        userId: Number(userId),
-        active: true
-    };
+  const payload: UserCourseRegister = {
+    courseId: Number(courseId),
+    userId: Number(userId),
+    active: true,
+  };
 
-    const register: userCourseRegister = await userCourseServices.signIn(payload);
+  const register: UserCourseRegister = await userCourseServices.signIn(payload);
 
-    return res.status(201).json({ message: "User successfully vinculed to course" })
-}; 
-
-const inactivateUser = async (req: Request, res: Response): Promise<any> => {
-    const courseId: string = req.params.courseId;
-    const userId: string = req.params.userId;
-
-    const payload: userCourseRegister = { 
-        courseId: Number(courseId),
-        userId: Number(userId),
-        active: false
-    };
-
-    const deleteUser: userCourseRegister = await userCourseServices.signIn(payload);
-
-    return res.status(204).json()
+  return res
+    .status(201)
+    .json({ message: "User successfully vinculed to course" });
 };
 
-// const read = async (req: Request, res: Response): Promise<any> => {
-//     const courseId: string = req.params.courseId
+const inactivateUser = async (req: Request, res: Response): Promise<any> => {
+  const courseId: string = req.params.courseId;
+  const userId: string = req.params.userId;
 
-//     console.log(res.locals.decoded)
-//     const userCourses: any = await userCourseServices.read();
+  const payload: UserCourseRegister = {
+    courseId: Number(courseId),
+    userId: Number(userId),
+    active: false,
+  };
 
-//     return res.status(200).json(userCourses);
-// }
+  const deleteUser: UserCourseRegister = await userCourseServices.signIn(
+    payload
+  );
 
-export default { signIn , inactivateUser };
+  return res.status(204).json();
+};
+
+const read = async (req: Request, res: Response): Promise<Response> => {
+  const courseId = Number(req.params.id);
+
+  const userCourses = await userCourseServices.read(courseId);
+
+  return res.status(200).json(userCourses);
+};
+
+export default { signIn, inactivateUser, read };

@@ -2,16 +2,16 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import "dotenv/config";
 
-import { tUser } from "../interfaces";
+import { User } from "../interfaces";
 import { client } from "../database";
 import { AppError } from "../errors";
 
 
-const create = async (payload: tUser): Promise<any> => {
+const create = async (payload: User): Promise<any> => {
     const { email, password } = payload;
     
     const queryResult = await client.query('SELECT * FROM "users" WHERE "email" = $1;', [email]);
-    const user: tUser = queryResult.rows[0];
+    const user: User = queryResult.rows[0];
 
     if(!user) {
         throw new AppError("Wrong email/password", 401);

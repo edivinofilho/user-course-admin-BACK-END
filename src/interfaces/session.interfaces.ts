@@ -1,10 +1,10 @@
 import { z } from "zod";
 import { sessionSchema } from "../schemas";
 
-type tSession = z.infer<typeof sessionSchema>;
+type Session = z.infer<typeof sessionSchema>;
 
 interface iToken {
     token: string;
 }
 
-export { tSession, iToken };
+export { Session, iToken };
