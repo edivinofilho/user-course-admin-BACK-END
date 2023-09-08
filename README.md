@@ -24,6 +24,9 @@ This project is part of the Full Stack Developer course at Kenzie Academy Brasil
 
 I would like to extend my gratitude to the instructors' team at Kenzie for their support and guidance throughout the development of this project.
 
+## Contact
+edivinofilho@hotmail.com
+
 ## How to build it
 
 # User e Courses + Permissão de Administrador
