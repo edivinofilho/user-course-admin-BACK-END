@@ -1,3 +1,31 @@
+# User and Course Management API
+Welcome to the User and Course Management API! This API serves as a Minimum Viable Product (MVP) for managing users, courses, and access control. Whether you're building an educational platform or any application requiring user management and course enrollment, this tool simplifies the process.
+
+## Key Features
+- User Registration: Register new users effortlessly by sending a POST request to /users. This creates user profiles within the system.
+- Authentication: Secure your application with user authentication. Create authentication tokens for users via the POST request to /login.
+- User Listing: Get a comprehensive list of all users with the GET request to /users.
+- Course Enrollment: Enroll users in courses using the POST request to /courses/:courseId/users/:userId. Manage course enrollments efficiently.
+- Course Listing: Retrieve a list of all available courses with the GET request to /courses.
+- Course Access Control: Control access to resources based on user roles. Some resources can only be accessed by logged-in users, while others require admin permissions.
+
+## Technology Stack
+This application is built using a powerful tech stack, including:
+
+- TypeScript: Providing type safety and enhanced developer experience.
+- bcryptjs: Ensuring secure password storage and authentication.
+- dotenv: Managing environment variables for configuration.
+- Express: A minimal and flexible Node.js web application framework.
+- pg: The PostgreSQL driver for Node.js, ensuring efficient database operations.
+- zod: A TypeScript-first schema validation library for data validation.
+
+## Credits
+This project is part of the Full Stack Developer course at Kenzie Academy Brasil (www.kenzie.com.br). All rights and intellectual property of this project belong to Kenzie Academy Brasil.
+
+I would like to extend my gratitude to the instructors' team at Kenzie for their support and guidance throughout the development of this project.
+
+## How to build it
+
 # User e Courses + Permissão de Administrador
 
 # Introdução
